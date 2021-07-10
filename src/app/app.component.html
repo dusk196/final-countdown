@@ -1,0 +1,8 @@
+<header>
+  <mat-card>
+    <button mat-raised-button color="primary">ADD NEW EVENT</button>
+    <mat-slide-toggle color="primary" [checked]="darkThemeChecked" (change)="onThemeChange()">
+      {{darkThemeChecked?'DARK':'LIGHT'}} THEME
+    </mat-slide-toggle>
+  </mat-card>
+</header>
