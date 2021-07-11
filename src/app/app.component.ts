@@ -78,7 +78,9 @@ export class AppComponent implements OnInit {
 
         break;
       case this.enums.actions.Delete:
-
+        this.countdowns.splice(event.id, 1);
+        this.cdStr = JSON.stringify(this.countdowns);
+        localStorage.setItem(this.enums.localStorage.Name, this.cdStr);
         break;
       default:
         break;
