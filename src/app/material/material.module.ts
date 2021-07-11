@@ -17,8 +17,8 @@ import { MomentDateModule } from '@angular/material-moment-adapter';
 // CDK
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
-// Local
-import { CUSTOM_DATE_FORMATS } from './../utils/date-formats';
+// Local imports
+import { CUSTOM_DATE_FORMATS } from 'src/app/utils/date-formats';
 
 @NgModule({
   declarations: [],

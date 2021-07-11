@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { AddEventComponent } from './components/add-event/add-event.component';
-import { CountdownData } from './utils/countdown';
+import { AddEventComponent } from 'src/app/components/add-event/add-event.component';
+import { CountdownData } from 'src/app/utils/countdown';
+import { DateInputs } from 'src/app/utils/date-inputs';
 
 import * as _moment from 'moment';
 
@@ -18,6 +19,7 @@ export class AppComponent {
 
   darkThemeChecked = true;
   countdowns: Array<CountdownData> = [];
+  cdStr: string = '';
 
   constructor(public dialog: MatDialog) { }
 
@@ -32,8 +34,14 @@ export class AppComponent {
 
   openDialog() {
     const dialogRef = this.dialog.open(AddEventComponent, { width: '60vw', data: { name: '', date: moment(new Date(), 'Do of MMMM, YYYY') } });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog result: ', result);
+    dialogRef.afterClosed().subscribe((result: DateInputs) => {
+      if (!!result) {
+        this.countdowns.forEach(element => {
+          element.selected = false;
+        });
+        this.countdowns.unshift({ name: result.name, date: result.date.toString(), selected: true });
+        this.cdStr = JSON.stringify(this.countdowns);
+      }
     });
   }
 

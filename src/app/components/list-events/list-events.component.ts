@@ -1,32 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+
+import { CountdownData } from 'src/app/utils/countdown';
 
 @Component({
   selector: 'app-list-events',
   templateUrl: './list-events.component.html',
   styleUrls: ['./list-events.component.scss']
 })
-export class ListEventsComponent implements OnInit {
 
-  movies = [
-    'Episode I - The Phantom Menace',
-    'Episode II - Attack of the Clones',
-    'Episode III - Revenge of the Sith',
-    'Episode IV - A New Hope',
-    'Episode V - The Empire Strikes Back',
-    'Episode VI - Return of the Jedi',
-    'Episode VII - The Force Awakens',
-    'Episode VIII - The Last Jedi',
-    'Episode IX – The Rise of Skywalker'
-  ];
+export class ListEventsComponent implements OnChanges {
 
-  constructor() { }
+  @Input() countdowns: string = '';
 
-  ngOnInit(): void {
+  allCountdowns: Array<CountdownData> = [];
+
+  ngOnChanges(): void {
+    console.log(this.countdowns);
+    if (!!this.countdowns) {
+      this.allCountdowns = JSON.parse(this.countdowns);
+    }
   }
 
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
+  sorted(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.allCountdowns, event.previousIndex, event.currentIndex);
   }
 
 }

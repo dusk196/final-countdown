@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { DateInputs } from './../../utils/date-inputs';
+import { DateInputs } from 'src/app/utils/date-inputs';
 
 @Component({
   selector: 'app-add-event',

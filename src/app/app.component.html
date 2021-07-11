@@ -18,7 +18,7 @@
 <main>
   <mat-drawer-container class="container">
     <mat-drawer mode="side" opened>
-      <app-list-events></app-list-events>
+      <app-list-events [countdowns]="cdStr"></app-list-events>
     </mat-drawer>
     <mat-drawer-content>Main content</mat-drawer-content>
   </mat-drawer-container>

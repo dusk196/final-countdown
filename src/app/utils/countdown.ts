@@ -1,7 +1,5 @@
-import { Moment } from 'moment';
-
 export interface CountdownData {
     name: string;
-    date: Moment;
+    date: string;
     selected: Boolean
 };
