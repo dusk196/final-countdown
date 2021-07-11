@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 
 import { AddEventComponent } from './components/add-event/add-event.component';
 
+import * as _moment from 'moment';
+const moment = _moment;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -25,7 +28,7 @@ export class AppComponent {
   }
 
   openDialog() {
-    const dialogRef = this.dialog.open(AddEventComponent, { width: '60vw', data: { name: '' } });
+    const dialogRef = this.dialog.open(AddEventComponent, { width: '60vw', data: { name: '', date: moment(new Date(), 'Do of MMMM, YYYY') } });
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result: ', result);
     });
