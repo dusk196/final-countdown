@@ -15,13 +15,15 @@ header {
 }
 
 main {
+
     padding-top: 70px;
-}
 
-mat-drawer {
-    width: 30vw;
-}
+    mat-drawer {
+        width: 30vw;
+    }
 
-.container {
-    height: calc(100vh - 70px);
+    .container {
+        height: calc(100vh - 70px);
+    }
+
 }

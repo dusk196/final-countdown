@@ -3,7 +3,7 @@
     <mat-toolbar-row>
       <span>FINAL COUNTDOWN</span>
       <span class="example-spacer"></span>
-      <button mat-raised-button color="accent" class="add-event">
+      <button mat-raised-button color="accent" class="add-event" (click)="openDialog()">
         <mat-icon>add_circle</mat-icon>
         NEW EVENT
       </button>
@@ -27,3 +27,5 @@
 <footer>
 
 </footer>
+
+<!-- <app-add-event *ngIf="showAddEvent"></app-add-event> -->

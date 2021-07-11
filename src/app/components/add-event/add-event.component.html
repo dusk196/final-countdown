@@ -1,1 +1,11 @@
-<p>add-event works!</p>
+<h1 mat-dialog-title>Add a new event:</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill" color='accent'>
+    <mat-label>Event name:</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>
