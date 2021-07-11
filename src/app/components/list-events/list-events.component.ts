@@ -4,6 +4,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CountdownData } from 'src/app/utils/countdown';
 import { ActionEvent } from 'src/app/utils/action-events';
 
+import * as _enums from 'src/app/utils/countdown.enum';
+
 @Component({
   selector: 'app-list-events',
   templateUrl: './list-events.component.html',
@@ -13,7 +15,8 @@ import { ActionEvent } from 'src/app/utils/action-events';
 export class ListEventsComponent implements OnChanges {
 
   @Input() countdowns: string = '';
-  @Output() returnEvents = new EventEmitter<ActionEvent>();
+  @Output() returnEvent = new EventEmitter<ActionEvent>();
+  @Output() sortedEvents = new EventEmitter<string>();
 
   allCountdowns: Array<CountdownData> = [];
   selectedEvent: ActionEvent = {
@@ -25,23 +28,24 @@ export class ListEventsComponent implements OnChanges {
       selected: false,
     }
   };
+  enums = _enums;
 
   ngOnChanges(): void {
-    console.log(this.countdowns);
     if (!!this.countdowns) {
       this.allCountdowns = JSON.parse(this.countdowns);
     }
   }
 
-  sorted(event: CdkDragDrop<string[]>) {
+  sorted(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.allCountdowns, event.previousIndex, event.currentIndex);
+    this.sortedEvents.emit(JSON.stringify(this.allCountdowns));
   }
 
   actionEvents(type: string, id: number, event: CountdownData): void {
     this.selectedEvent.type = type;
     this.selectedEvent.id = id;
     this.selectedEvent.events = event;
-    this.returnEvents.emit(this.selectedEvent);
+    this.returnEvent.emit(this.selectedEvent);
   }
 
 }

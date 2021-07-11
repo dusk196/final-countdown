@@ -2,20 +2,20 @@
     <div cdkDropList class="event-list" (cdkDropListDropped)="sorted($event)">
         <div class="event" *ngFor="let countdown of allCountdowns; index as i;" cdkDrag cdkDragLockAxis="y">
             <div>
-                <h2>{{i}} {{countdown.name}}</h2>
+                <h2>{{i+1}}. {{countdown.name}}</h2>
                 <p>{{countdown.date | date:'fullDate'}}</p>
             </div>
             <div class="event-options">
                 <button mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon"
-                    (click)="actionEvents('delete', i, countdown)">
+                    (click)="actionEvents(enums.actions.Delete, i, countdown)">
                     <mat-icon>delete_outline</mat-icon>
                 </button>
                 <button mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon"
-                    (click)="actionEvents('delete', i, countdown)">
+                    (click)="actionEvents(enums.actions.Update, i, countdown)">
                     <mat-icon>settings</mat-icon>
                 </button>
                 <button mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon"
-                    (click)="actionEvents('delete', i, countdown)">
+                    (click)="actionEvents(enums.actions.Edit, i, countdown)">
                     <mat-icon>task_alt</mat-icon>
                 </button>
             </div>
