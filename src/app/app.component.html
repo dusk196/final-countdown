@@ -21,7 +21,9 @@
       <app-list-events [countdowns]="cdStr" (returnEvent)="eventActions($event)"
         (sortedEvents)="storeSortedEvents($event)"></app-list-events>
     </mat-drawer>
-    <mat-drawer-content>Main content</mat-drawer-content>
+    <mat-drawer-content>
+      <app-show-event [selectedEvent]="selectedEvent"></app-show-event>
+    </mat-drawer-content>
   </mat-drawer-container>
 </main>
 

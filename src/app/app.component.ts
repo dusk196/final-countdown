@@ -22,6 +22,7 @@ export class AppComponent implements OnInit {
   darkThemeChecked = true;
   countdowns: Array<CountdownData> = [];
   cdStr: string = '';
+  selectedEvent: string = '';
   enums = _enums;
 
   constructor(public dialog: MatDialog) { }
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit {
         const events = JSON.parse(savedEvents);
         this.countdowns = events;
         this.cdStr = savedEvents;
+        this.previewEvent(this.countdowns.filter(x => x.selected)[0]);
       } catch (err: unknown) {
         localStorage.removeItem(this.enums.localStorage.Name);
       }
@@ -59,14 +61,21 @@ export class AppComponent implements OnInit {
             element.selected = false;
           });
           this.countdowns.unshift({ name: result.name, date: result.date.toString(), selected: true });
+          this.previewEvent(this.countdowns[0]);
         } else {
           this.countdowns[id].name = result.name;
           this.countdowns[id].date = result.date.toString();
+          this.previewEvent(this.countdowns[id]);
         }
         this.cdStr = JSON.stringify(this.countdowns);
         localStorage.setItem(this.enums.localStorage.Name, this.cdStr);
       }
     });
+  }
+
+  previewEvent(event: CountdownData): void {
+    console.log('preview', event);
+    this.selectedEvent = JSON.stringify(event);
   }
 
   eventActions(event: ActionEvent) {
@@ -75,12 +84,13 @@ export class AppComponent implements OnInit {
         this.openDialog(event.events.name, event.events.date, event.id);
         break;
       case this.enums.actions.Select:
-
+        this.previewEvent(this.countdowns[event.id]);
         break;
       case this.enums.actions.Delete:
         this.countdowns.splice(event.id, 1);
         this.cdStr = JSON.stringify(this.countdowns);
         localStorage.setItem(this.enums.localStorage.Name, this.cdStr);
+        this.previewEvent(this.countdowns[0]);
         break;
       default:
         break;
