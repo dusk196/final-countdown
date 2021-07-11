@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
 
   openDialog(eventName: string, eventDate: string, id: number) {
     const isNew = !eventName;
-    const newDate = !!eventDate ? moment(new Date(eventDate), 'DD MMMM, YYYY') : moment(new Date(), 'Do of MMMM, YYYY');
+    const newDate = !!eventDate ? moment(new Date(eventDate), 'Do of MMMM, YYYY') : moment(new Date(), 'Do of MMMM, YYYY');
     const dialogRef = this.dialog.open(AddEventComponent, { width: '60vw', data: { name: eventName, date: newDate } });
     dialogRef.afterClosed().subscribe((result: DateInputs) => {
       if (!!result) {

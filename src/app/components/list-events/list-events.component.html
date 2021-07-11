@@ -6,15 +6,15 @@
                 <p>{{countdown.date | date:'fullDate'}}</p>
             </div>
             <div class="event-options">
-                <button mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon"
+                <button mat-mini-fab color="primary" aria-label="Delete event" matTooltip="Delete event"
                     (click)="actionEvents(enums.actions.Delete, i, countdown)">
                     <mat-icon>delete_outline</mat-icon>
                 </button>
-                <button mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon"
+                <button mat-mini-fab color="primary" aria-label="Edit event" matTooltip="Edit event"
                     (click)="actionEvents(enums.actions.Edit, i, countdown)">
                     <mat-icon>settings</mat-icon>
                 </button>
-                <button mat-mini-fab color="primary" aria-label="Example icon button with a filter list icon"
+                <button mat-mini-fab color="primary" aria-label="Select Event" matTooltip="Select Event"
                     (click)="actionEvents(enums.actions.Select, i, countdown)">
                     <mat-icon>task_alt</mat-icon>
                 </button>

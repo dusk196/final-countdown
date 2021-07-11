@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-// Components
+// Material
 import { MatIconModule } from '@angular/material/icon'
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,6 +12,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MAT_DATE_FORMATS } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+// Moment
 import { MomentDateModule } from '@angular/material-moment-adapter';
 
 // CDK
@@ -26,7 +29,7 @@ import { CUSTOM_DATE_FORMATS } from 'src/app/utils/date-formats';
     CommonModule
   ],
   exports: [
-    // Components
+    // Material
     MatIconModule,
     MatToolbarModule,
     MatButtonModule,
@@ -37,6 +40,8 @@ import { CUSTOM_DATE_FORMATS } from 'src/app/utils/date-formats';
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatTooltipModule,
+    // Moment
     MomentDateModule,
     // CDK
     DragDropModule
