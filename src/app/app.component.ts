@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { CountdownData } from './utils/countdown';
 
 import * as _moment from 'moment';
+
 const moment = _moment;
 
 @Component({
@@ -15,6 +17,7 @@ const moment = _moment;
 export class AppComponent {
 
   darkThemeChecked = true;
+  countdowns: Array<CountdownData> = [];
 
   constructor(public dialog: MatDialog) { }
 
