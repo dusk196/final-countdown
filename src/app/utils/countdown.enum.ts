@@ -4,6 +4,6 @@ export enum localStorage {
 
 export enum actions {
     Edit = 'edit',
-    Update = 'update',
+    Select = 'select',
     Delete = 'delete'
 }

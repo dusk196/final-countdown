@@ -48,26 +48,46 @@ export class AppComponent implements OnInit {
     }
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(AddEventComponent, { width: '60vw', data: { name: '', date: moment(new Date(), 'Do of MMMM, YYYY') } });
+  openDialog(eventName: string, eventDate: string, id: number) {
+    const isNew = !eventName;
+    const newDate = !!eventDate ? moment(eventDate, 'Do of MMMM, YYYY') : moment(new Date(), 'Do of MMMM, YYYY');
+    const dialogRef = this.dialog.open(AddEventComponent, { width: '60vw', data: { name: eventName, date: newDate } });
     dialogRef.afterClosed().subscribe((result: DateInputs) => {
       if (!!result) {
-        this.countdowns.forEach(element => {
-          element.selected = false;
-        });
-        this.countdowns.unshift({ name: result.name, date: result.date.toString(), selected: true });
+        if (isNew) {
+          this.countdowns.forEach(element => {
+            element.selected = false;
+          });
+          this.countdowns.unshift({ name: result.name, date: result.date.toString(), selected: true });
+        } else {
+          this.countdowns[id].name = result.name;
+          this.countdowns[id].date = result.date.toString();
+        }
         this.cdStr = JSON.stringify(this.countdowns);
-        this.storeSortedEvents(this.cdStr);
+        localStorage.setItem(this.enums.localStorage.Name, this.cdStr);
       }
     });
   }
 
   eventActions(event: ActionEvent) {
-    console.log(event);
+    switch (event.type) {
+      case this.enums.actions.Edit:
+        this.openDialog(event.events.name, event.events.date, event.id);
+        break;
+      case this.enums.actions.Select:
+
+        break;
+      case this.enums.actions.Delete:
+
+        break;
+      default:
+        break;
+    }
   }
 
   storeSortedEvents(events: string) {
     localStorage.setItem(this.enums.localStorage.Name, events);
+    this.countdowns = JSON.parse(events);
   }
 
 }
