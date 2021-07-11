@@ -1,8 +1,29 @@
 <header>
-  <mat-card>
-    <button mat-raised-button color="primary">ADD NEW EVENT</button>
-    <mat-slide-toggle color="primary" [checked]="darkThemeChecked" (change)="onThemeChange()">
-      {{darkThemeChecked?'DARK':'LIGHT'}} THEME
-    </mat-slide-toggle>
-  </mat-card>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>FINAL COUNTDOWN</span>
+      <span class="example-spacer"></span>
+      <button mat-raised-button color="accent" class="add-event">
+        <mat-icon>add_circle</mat-icon>
+        NEW EVENT
+      </button>
+      <span class="spacer"></span>
+      <mat-slide-toggle [checked]="darkThemeChecked" (change)="onThemeChange()">
+        Dark Mode
+      </mat-slide-toggle>
+    </mat-toolbar-row>
+  </mat-toolbar>
 </header>
+
+<main>
+  <mat-drawer-container class="container">
+    <mat-drawer mode="side" opened>
+      <app-list-events></app-list-events>
+    </mat-drawer>
+    <mat-drawer-content>Main content</mat-drawer-content>
+  </mat-drawer-container>
+</main>
+
+<footer>
+
+</footer>

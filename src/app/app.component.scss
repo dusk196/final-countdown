@@ -1,7 +1,27 @@
-mat-card {
-    border-radius: 0px;
+header {
+
+    position: fixed;
+    width   : 100%;
+    z-index : 3;
+
+    .spacer {
+        flex: 1 1 auto;
+    }
+
+    .add-event {
+        margin-left: 20px;
+    }
+
 }
 
-mat-slide-toggle {
-    float: right;
+main {
+    padding-top: 70px;
+}
+
+mat-drawer {
+    width: 30vw;
+}
+
+.container {
+    height: calc(100vh - 70px);
 }

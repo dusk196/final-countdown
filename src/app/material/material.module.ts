@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatCardModule } from '@angular/material/card';
+// Components
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
+// Icons
+import { MatIconModule } from '@angular/material/icon'
+
+// CDK
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [],
@@ -12,10 +20,16 @@ import { MatDialogModule } from '@angular/material/dialog';
     CommonModule
   ],
   exports: [
-    MatCardModule,
+    // Components
+    MatToolbarModule,
     MatButtonModule,
     MatSlideToggleModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSidenavModule,
+    // Icons
+    MatIconModule,
+    // CDK
+    DragDropModule
   ]
 })
 

@@ -4,9 +4,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 
-import { AddEventComponent } from './add-event/add-event.component';
-import { ListEventsComponent } from './list-events/list-events.component';
-import { ShowEventComponent } from './show-event/show-event.component';
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { ListEventsComponent } from './components/list-events/list-events.component';
+import { ShowEventComponent } from './components/show-event/show-event.component';
+
 import { MaterialModule } from './material/material.module';
 
 @NgModule({

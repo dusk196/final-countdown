@@ -2,19 +2,20 @@
 
 @include mat.core();
 
+// Define a warn theme
+$warn : mat.define-palette(mat.$red-palette);
+
 // Define a light theme
 $light-primary: mat.define-palette(mat.$indigo-palette);
 $light-accent : mat.define-palette(mat.$pink-palette);
-$light-warn   : mat.define-palette(mat.$red-palette);
 
-$light-theme : mat.define-light-theme((color: (primary: $light-primary, accent: $light-accent, warn: $light-warn)));
+$light-theme : mat.define-light-theme((color: (primary: $light-primary, accent: $light-accent, warn: $warn)));
 
 // Define a dark theme
-$dark-primary: mat.define-palette(mat.$pink-palette);
-$dark-accent : mat.define-palette(mat.$blue-grey-palette);
-$dark-warn   : mat.define-palette(mat.$red-palette);
+$dark-primary: mat.define-palette(mat.$purple-palette);
+$dark-accent : mat.define-palette(mat.$amber-palette);
 
-$dark-theme : mat.define-dark-theme((color: (primary: $dark-primary, accent: $dark-accent, warn: $dark-warn)));
+$dark-theme : mat.define-dark-theme((color: (primary: $dark-primary, accent: $dark-accent, warn: $warn)));
 
 // Apply the dark theme by default
 @include mat.all-component-themes($dark-theme);
@@ -25,12 +26,14 @@ body {
 }
 
 body {
-  margin     : 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin          : 0;
+  font-family     : Roboto, "Helvetica Neue", sans-serif;
+  background-color: #303030;
 }
 
 // Apply the light theme only when the `.light-theme` CSS class is applied
 // to an ancestor element of the components (such as `body`).
 .light-theme {
-  @include mat.all-component-themes($light-theme);
+  @include mat.all-component-colors($light-theme);
+  background-color: #FEFEFE;
 }
