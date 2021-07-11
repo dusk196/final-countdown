@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEventComponent } from 'src/app/components/add-event/add-event.component';
 import { CountdownData } from 'src/app/utils/countdown';
 import { DateInputs } from 'src/app/utils/date-inputs';
+import { ActionEvent } from 'src/app/utils/action-events';
 
 import * as _moment from 'moment';
 
@@ -43,6 +44,10 @@ export class AppComponent {
         this.cdStr = JSON.stringify(this.countdowns);
       }
     });
+  }
+
+  eventActions(event: ActionEvent) {
+    console.log(event);
   }
 
 }
