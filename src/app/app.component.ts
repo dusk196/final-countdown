@@ -12,7 +12,6 @@ import { AddEventComponent } from './components/add-event/add-event.component';
 export class AppComponent {
 
   darkThemeChecked = true;
-  // showAddEvent = false;
 
   constructor(public dialog: MatDialog) { }
 
@@ -25,12 +24,8 @@ export class AppComponent {
     }
   }
 
-  // showAddEventDialog(): void {
-  //   this.showAddEvent = true;
-  // }
-
   openDialog() {
-    const dialogRef = this.dialog.open(AddEventComponent, { data: { name: '' } });
+    const dialogRef = this.dialog.open(AddEventComponent, { width: '60vw', data: { name: '' } });
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result: ', result);
     });
