@@ -20,6 +20,15 @@ $dark-theme : mat.define-dark-theme((color: (primary: $dark-primary, accent: $da
 // Apply the dark theme by default
 @include mat.all-component-themes($dark-theme);
 
+:root {
+  --white1: #FFFFFF;
+  --white2: #EFEFEF;
+  --black1: #000000;
+  --black2: #222222;
+  --black3: #424242;
+  --black4: #0A090C;
+}
+
 html,
 body {
   height: 100%;
@@ -28,12 +37,43 @@ body {
 body {
   margin          : 0;
   font-family     : Roboto, "Helvetica Neue", sans-serif;
-  background-color: #303030;
+  background-color: var(--black2);
 }
 
 // Apply the light theme only when the `.light-theme` CSS class is applied
 // to an ancestor element of the components (such as `body`).
 .light-theme {
+
   @include mat.all-component-colors($light-theme);
-  background-color: #FEFEFE;
+  background-color: var(--white1);
+
+  mat-drawer {
+    background-color: var(--white1) !important;
+  }
+
+  mat-drawer-content {
+    background-color: var(--white1) !important;
+  }
+
+  .event {
+    background: var(--white2) !important;
+    color     : var(--black2) !important;
+  }
+
+  .event-list {
+    background: var(--white1) !important;
+  }
+
+  .cdk-drag-placeholder {
+    background-color: var(--white1) !important;
+    color           : var(--white1) !important;
+    opacity         : 1 !important;
+  }
+
+}
+
+.cdk-drag-placeholder {
+  background-color: var(--black2) !important;
+  color           : var(--black2) !important;
+  opacity         : 1 !important;
 }

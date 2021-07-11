@@ -13,7 +13,7 @@ export class ListEventsComponent implements OnChanges {
 
   @Input() countdowns: string = '';
 
-  allCountdowns: Array<CountdownData> = [];
+  allCountdowns: Array<any> = [];
 
   ngOnChanges(): void {
     console.log(this.countdowns);
