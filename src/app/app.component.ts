@@ -108,4 +108,10 @@ export class AppComponent implements OnInit {
     this.selectedEvent = '';
   }
 
+  addDemo() {
+    localStorage.removeItem(this.enums.localStorage.Name);
+    localStorage.setItem(this.enums.localStorage.Name, this.enums.demo.Calender1);
+    this.ngOnInit();
+  }
+
 }

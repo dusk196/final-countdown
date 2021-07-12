@@ -7,9 +7,13 @@
         <mat-icon>add_circle</mat-icon>
         NEW EVENT
       </button>
-      <button mat-raised-button color="accent" class="nav-btn" (click)="deleteAll()">
+      <button *ngIf="countdowns.length > 0" mat-raised-button color="accent" class="nav-btn" (click)="deleteAll()">
         <mat-icon>delete</mat-icon>
         DELETE ALL
+      </button>
+      <button *ngIf="countdowns.length === 0" mat-raised-button color="accent" class="nav-btn" (click)="addDemo()">
+        <mat-icon>class</mat-icon>
+        DEMO
       </button>
       <span class="spacer"></span>
       <mat-slide-toggle [checked]="darkThemeChecked" (change)="onThemeChange()">
