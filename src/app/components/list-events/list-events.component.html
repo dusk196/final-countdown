@@ -1,13 +1,12 @@
-<mat-form-field *ngIf="allCountdowns.length>0 else showNoContent" class="search" appearance="fill">
+<mat-form-field *ngIf="allCountdowns.length > 0 else showNoContent" class="search" appearance="fill">
     <mat-label>Search</mat-label>
     <input matInput placeholder="Type an event name:" [(ngModel)]="search">
 </mat-form-field>
 
-<ng-container *ngIf="allCountdowns.length>0 else showNoContent">
+<ng-container *ngIf="allCountdowns.length > 0">
     <div cdkDropList class="event-list" (cdkDropListDropped)="sorted($event)">
         <ng-container *ngFor="let countdown of allCountdowns; index as i;">
-            <div class="event" *ngIf="countdown.name.indexOf(search) > -1" cdkDrag
-                cdkDragLockAxis="y">
+            <div class="event" *ngIf="countdown.name.indexOf(search) > -1" cdkDrag cdkDragLockAxis="y">
                 <div>
                     <h2>{{i+1}}. {{countdown.name}}</h2>
                     <p>{{countdown.date | date:'fullDate'}}</p>

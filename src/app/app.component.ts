@@ -50,7 +50,7 @@ export class AppComponent implements OnInit {
     }
   }
 
-  openDialog(eventName: string, eventDate: string, id: number) {
+  openDialog(eventName: string, eventDate: string, id: number): void {
     const isNew = !eventName;
     const newDate = !!eventDate ? moment(new Date(eventDate), 'Do of MMMM, YYYY') : moment(new Date(), 'Do of MMMM, YYYY');
     const dialogRef = this.dialog.open(AddEventComponent, { width: '60vw', data: { name: eventName, date: newDate } });
@@ -74,11 +74,10 @@ export class AppComponent implements OnInit {
   }
 
   previewEvent(event: CountdownData): void {
-    console.log('preview', event);
     this.selectedEvent = JSON.stringify(event);
   }
 
-  eventActions(event: ActionEvent) {
+  eventActions(event: ActionEvent): void {
     switch (event.type) {
       case this.enums.actions.Edit:
         this.openDialog(event.events.name, event.events.date, event.id);
@@ -97,9 +96,16 @@ export class AppComponent implements OnInit {
     }
   }
 
-  storeSortedEvents(events: string) {
+  storeSortedEvents(events: string): void {
     localStorage.setItem(this.enums.localStorage.Name, events);
     this.countdowns = JSON.parse(events);
+  }
+
+  deleteAll(): void {
+    localStorage.removeItem(this.enums.localStorage.Name);
+    this.countdowns = [];
+    this.cdStr = '';
+    this.selectedEvent = '';
   }
 
 }

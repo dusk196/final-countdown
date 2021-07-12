@@ -34,6 +34,8 @@ export class ListEventsComponent implements OnChanges {
   ngOnChanges(): void {
     if (!!this.countdowns) {
       this.allCountdowns = JSON.parse(this.countdowns);
+    } else {
+      this.allCountdowns = [];
     }
   }
 

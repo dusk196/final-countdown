@@ -18,7 +18,6 @@ export class ShowEventComponent implements OnChanges {
   event: CountdownData = { name: '', date: '', selected: false };
 
   ngOnChanges(): void {
-    console.log(this.selectedEvent);
     if (!!this.selectedEvent) {
       this.event = JSON.parse(this.selectedEvent);
       this.days = this.dateDiff(new Date(), new Date(this.event.date), 'days');
