@@ -18,7 +18,9 @@ export class ListEventsComponent implements OnChanges {
   @Output() returnEvent = new EventEmitter<ActionEvent>();
   @Output() sortedEvents = new EventEmitter<string>();
 
+  enums = _enums;
   allCountdowns: Array<CountdownData> = [];
+  search: string = '';
   selectedEvent: ActionEvent = {
     type: '',
     id: -1,
@@ -28,7 +30,6 @@ export class ListEventsComponent implements OnChanges {
       selected: false,
     }
   };
-  enums = _enums;
 
   ngOnChanges(): void {
     if (!!this.countdowns) {
