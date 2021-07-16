@@ -40,6 +40,10 @@ body {
   background-color: var(--black2);
 }
 
+section {
+  margin: 20px;
+}
+
 // Apply the light theme only when the `.light-theme` CSS class is applied
 // to an ancestor element of the components (such as `body`).
 .light-theme {

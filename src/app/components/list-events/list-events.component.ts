@@ -21,6 +21,7 @@ export class ListEventsComponent implements OnChanges {
   enums = _enums;
   allCountdowns: Array<CountdownData> = [];
   search: string = '';
+  showSearchMsg: Boolean = false;
   selectedEvent: ActionEvent = {
     type: '',
     id: -1,
@@ -32,11 +33,10 @@ export class ListEventsComponent implements OnChanges {
   };
 
   ngOnChanges(): void {
-    if (!!this.countdowns) {
+    if (!!this.countdowns)
       this.allCountdowns = JSON.parse(this.countdowns);
-    } else {
+    else
       this.allCountdowns = [];
-    }
   }
 
   sorted(event: CdkDragDrop<string[]>): void {
@@ -49,6 +49,23 @@ export class ListEventsComponent implements OnChanges {
     this.selectedEvent.id = id;
     this.selectedEvent.events = event;
     this.returnEvent.emit(this.selectedEvent);
+  }
+
+  filterSearchMsg() {
+    setTimeout(() => {
+      let count = 0;
+      this.allCountdowns.forEach(element => {
+        if (element.name.indexOf(this.search) > -1)
+          count++;
+      });
+      console.log('pressed', count);
+      this.showSearchMsg = count === 0;
+    });
+  }
+
+  resetSearch() {
+    this.search = '';
+    this.filterSearchMsg();
   }
 
 }

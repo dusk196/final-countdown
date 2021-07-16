@@ -28,7 +28,8 @@ export class AppComponent implements OnInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    const savedEvents = localStorage.getItem(this.enums.localStorage.Name);
+    // For events
+    const savedEvents = localStorage.getItem(this.enums.localStorage.Events);
     if (!!savedEvents) {
       try {
         const events = JSON.parse(savedEvents);
@@ -36,18 +37,28 @@ export class AppComponent implements OnInit {
         this.cdStr = savedEvents;
         this.previewEvent(this.countdowns.filter(x => x.selected)[0]);
       } catch (err: unknown) {
-        localStorage.removeItem(this.enums.localStorage.Name);
+        localStorage.removeItem(this.enums.localStorage.Events);
+      }
+    }
+    // For Configs
+    const savedConfigs = localStorage.getItem(this.enums.localStorage.Configs);
+    if (!!savedConfigs) {
+      try {
+        const configs = JSON.parse(savedConfigs);
+        // this.this.darkThemeChecked
+      } catch (err: unknown) {
+        localStorage.removeItem(this.enums.localStorage.Configs);
       }
     }
   }
 
   onThemeChange(): void {
     this.darkThemeChecked = !this.darkThemeChecked;
-    if (this.darkThemeChecked) {
+    if (this.darkThemeChecked)
       document.getElementsByTagName('body')[0].classList.remove('light-theme');
-    } else {
+    else
       document.getElementsByTagName('body')[0].classList.add('light-theme');
-    }
+
   }
 
   openDialog(eventName: string, eventDate: string, id: number): void {
@@ -68,7 +79,7 @@ export class AppComponent implements OnInit {
           this.previewEvent(this.countdowns[id]);
         }
         this.cdStr = JSON.stringify(this.countdowns);
-        localStorage.setItem(this.enums.localStorage.Name, this.cdStr);
+        localStorage.setItem(this.enums.localStorage.Events, this.cdStr);
       }
     });
   }
@@ -88,7 +99,7 @@ export class AppComponent implements OnInit {
       case this.enums.actions.Delete:
         this.countdowns.splice(event.id, 1);
         this.cdStr = JSON.stringify(this.countdowns);
-        localStorage.setItem(this.enums.localStorage.Name, this.cdStr);
+        localStorage.setItem(this.enums.localStorage.Events, this.cdStr);
         this.previewEvent(this.countdowns[0]);
         break;
       default:
@@ -97,20 +108,20 @@ export class AppComponent implements OnInit {
   }
 
   storeSortedEvents(events: string): void {
-    localStorage.setItem(this.enums.localStorage.Name, events);
+    localStorage.setItem(this.enums.localStorage.Events, events);
     this.countdowns = JSON.parse(events);
   }
 
   deleteAll(): void {
-    localStorage.removeItem(this.enums.localStorage.Name);
+    localStorage.removeItem(this.enums.localStorage.Events);
     this.countdowns = [];
     this.cdStr = '';
     this.selectedEvent = '';
   }
 
   addDemo() {
-    localStorage.removeItem(this.enums.localStorage.Name);
-    localStorage.setItem(this.enums.localStorage.Name, this.enums.demo.Calender1);
+    localStorage.removeItem(this.enums.localStorage.Events);
+    localStorage.setItem(this.enums.localStorage.Events, this.enums.demo.Calender1);
     this.ngOnInit();
   }
 
