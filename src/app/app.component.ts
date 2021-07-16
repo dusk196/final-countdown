@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { BooleanInput } from '@angular/cdk/coercion';
 
 import { AddEventComponent } from 'src/app/components/add-event/add-event.component';
 import { CountdownData } from 'src/app/utils/countdown';
+import { CountdownConfig } from 'src/app/utils/config';
 import { DateInputs } from 'src/app/utils/date-inputs';
 import { ActionEvent } from 'src/app/utils/action-events';
 
@@ -19,10 +21,12 @@ const moment = _moment;
 
 export class AppComponent implements OnInit {
 
-  darkThemeChecked = true;
+  configs: CountdownConfig = { darkTheme: true };
+  darkThemeChecked: BooleanInput = true;
   countdowns: Array<CountdownData> = [];
   cdStr: string = '';
   selectedEvent: string = '';
+
   enums = _enums;
 
   constructor(public dialog: MatDialog) { }
@@ -45,7 +49,9 @@ export class AppComponent implements OnInit {
     if (!!savedConfigs) {
       try {
         const configs = JSON.parse(savedConfigs);
-        // this.this.darkThemeChecked
+        this.darkThemeChecked = configs.darkThemeChecked;
+        this.configs.darkTheme = configs.darkThemeChecked;
+        this.applyTheme();
       } catch (err: unknown) {
         localStorage.removeItem(this.enums.localStorage.Configs);
       }
@@ -54,11 +60,16 @@ export class AppComponent implements OnInit {
 
   onThemeChange(): void {
     this.darkThemeChecked = !this.darkThemeChecked;
-    if (this.darkThemeChecked)
+    this.configs.darkTheme = this.darkThemeChecked;
+    this.applyTheme();
+  }
+
+  applyTheme(): void {
+    if (this.configs.darkTheme)
       document.getElementsByTagName('body')[0].classList.remove('light-theme');
     else
       document.getElementsByTagName('body')[0].classList.add('light-theme');
-
+    localStorage.setItem(this.enums.localStorage.Configs, JSON.stringify(this.configs));
   }
 
   openDialog(eventName: string, eventDate: string, id: number): void {
