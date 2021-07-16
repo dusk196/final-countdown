@@ -22,7 +22,6 @@ const moment = _moment;
 export class AppComponent implements OnInit {
 
   configs: CountdownConfig = { darkTheme: true };
-  darkThemeChecked: BooleanInput = true;
   countdowns: Array<CountdownData> = [];
   cdStr: string = '';
   selectedEvent: string = '';
@@ -48,9 +47,8 @@ export class AppComponent implements OnInit {
     const savedConfigs = localStorage.getItem(this.enums.localStorage.Configs);
     if (!!savedConfigs) {
       try {
-        const configs = JSON.parse(savedConfigs);
-        this.darkThemeChecked = configs.darkThemeChecked;
-        this.configs.darkTheme = configs.darkThemeChecked;
+        const configs: CountdownConfig = JSON.parse(savedConfigs);
+        this.configs.darkTheme = configs.darkTheme;
         this.applyTheme();
       } catch (err: unknown) {
         localStorage.removeItem(this.enums.localStorage.Configs);
@@ -59,8 +57,7 @@ export class AppComponent implements OnInit {
   }
 
   onThemeChange(): void {
-    this.darkThemeChecked = !this.darkThemeChecked;
-    this.configs.darkTheme = this.darkThemeChecked;
+    this.configs.darkTheme = !this.configs.darkTheme;
     this.applyTheme();
   }
 
