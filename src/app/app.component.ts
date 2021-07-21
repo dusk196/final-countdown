@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BooleanInput } from '@angular/cdk/coercion';
 
 import { AddEventComponent } from 'src/app/components/add-event/add-event.component';
 import { CountdownData } from 'src/app/utils/countdown';

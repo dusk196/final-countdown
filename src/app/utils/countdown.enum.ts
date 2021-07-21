@@ -1,6 +1,7 @@
 export enum localStorage {
     Events = 'countdown-events',
-    Configs = 'countdown-config'
+    Configs = 'countdown-config',
+    Holidays = 'countdown-holidays'
 }
 
 export enum actions {

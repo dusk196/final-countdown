@@ -1,8 +1,7 @@
 <header>
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>THE FINAL COUNTDOWN</span>
-      <span class="example-spacer"></span>
+      <h1>HOW MANY DAYS?!</h1>
       <button mat-raised-button color="accent" class="nav-btn" (click)="openDialog('','', -1)">
         <mat-icon>add_circle</mat-icon>
         NEW EVENT
@@ -16,9 +15,9 @@
         DEMO
       </button>
       <span class="spacer"></span>
-      <mat-slide-toggle [checked]="configs.darkTheme" (change)="onThemeChange()">
-        Dark Mode
-      </mat-slide-toggle>
+      <button mat-mini-fab color="accent" aria-label="Toggle Theme" matTooltip="Toggle theme" (click)="onThemeChange()">
+        <mat-icon>{{configs.darkTheme?'light_mode':'nightlight'}}</mat-icon>
+      </button>
     </mat-toolbar-row>
   </mat-toolbar>
 </header>
