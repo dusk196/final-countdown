@@ -50,7 +50,9 @@ import { CUSTOM_DATE_FORMATS } from 'src/app/utils/date-formats';
     // CDK
     DragDropModule
   ],
-  providers: [{ provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS }]
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: CUSTOM_DATE_FORMATS }
+  ]
 })
 
 export class MaterialModule { }
