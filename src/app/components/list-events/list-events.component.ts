@@ -51,7 +51,7 @@ export class ListEventsComponent implements OnChanges {
     this.returnEvent.emit(this.selectedEvent);
   }
 
-  filterSearchMsg() {
+  filterSearchMsg(): void {
     setTimeout(() => {
       let count = 0;
       this.allCountdowns.forEach(element => {
@@ -63,7 +63,7 @@ export class ListEventsComponent implements OnChanges {
     });
   }
 
-  resetSearch() {
+  resetSearch(): void {
     this.search = '';
     this.filterSearchMsg();
   }

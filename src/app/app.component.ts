@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
 import { AddEventComponent } from 'src/app/components/add-event/add-event.component';
@@ -18,18 +18,23 @@ const moment = _moment;
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
 
   configs: CountdownConfig = { darkTheme: true };
   countdowns: Array<CountdownData> = [];
   cdStr: string = '';
   selectedEvent: string = '';
+  currDateTime = new Date();
+  dateTimeInterval: any;
 
   enums = _enums;
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.dateTimeInterval = setInterval(() => {
+      this.currDateTime = new Date();
+    }, 1000);
     // For events
     const savedEvents = localStorage.getItem(this.enums.localStorage.Events);
     if (!!savedEvents) {
@@ -126,10 +131,14 @@ export class AppComponent implements OnInit {
     this.selectedEvent = '';
   }
 
-  addDemo() {
+  addDemo(): void {
     localStorage.removeItem(this.enums.localStorage.Events);
     localStorage.setItem(this.enums.localStorage.Events, this.enums.demo.Calender1);
     this.ngOnInit();
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.dateTimeInterval);
   }
 
 }

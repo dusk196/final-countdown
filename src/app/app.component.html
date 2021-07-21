@@ -1,7 +1,7 @@
 <header>
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <h1>HOW MANY DAYS?!</h1>
+      <h1 class="heading">HOW MANY DAYS?!</h1>
       <button mat-raised-button color="accent" class="nav-btn" (click)="openDialog('','', -1)">
         <mat-icon>add_circle</mat-icon>
         NEW EVENT
@@ -15,7 +15,12 @@
         DEMO
       </button>
       <span class="spacer"></span>
-      <button mat-mini-fab color="accent" aria-label="Toggle Theme" matTooltip="Toggle theme" (click)="onThemeChange()">
+      <div class="nav-cal">
+        <span>{{currDateTime | date:'mediumTime'}} (IST)</span>
+        <span>{{currDateTime | date:'fullDate'}}</span>
+      </div>
+      <button mat-mini-fab color="accent" aria-label="Toggle Theme"
+        [matTooltip]="configs.darkTheme?'Toggle to light mode':'Toggle to dark mode'" (click)="onThemeChange()">
         <mat-icon>{{configs.darkTheme?'light_mode':'nightlight'}}</mat-icon>
       </button>
     </mat-toolbar-row>

@@ -12,8 +12,6 @@ export class ShowEventComponent implements OnChanges {
 
   @Input() selectedEvent: string = '';
 
-  constructor() { }
-
   days: number = 0;
   event: CountdownData = { name: '', date: '', selected: false };
   msg: String = '';

@@ -15,38 +15,14 @@ import * as _enums from 'src/app/utils/countdown.enum';
 
 export class AddEventComponent implements OnInit {
 
+  enums = _enums;
+
   minDate: Date = new Date();
   isHolidaysLoaded: Boolean = false;
   eventList: Array<CalendarEvents> = [];
+  shownList: Array<CalendarEvents> = [];
   currentYear = new Date().getFullYear();
   msg: String = '';
-
-  enums = _enums;
-
-  folders = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16'),
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16'),
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16'),
-    }
-  ];
-  notes = [
-    {
-      name: 'Vacation Itinerary',
-      updated: new Date('2/20/16'),
-    },
-    {
-      name: 'Kitchen Remodel',
-      updated: new Date('1/18/16'),
-    }
-  ];
 
   constructor(public dialogRef: MatDialogRef<AddEventComponent>, @Inject(MAT_DIALOG_DATA) public data: DateInputs, private appService: AppService) { }
 
