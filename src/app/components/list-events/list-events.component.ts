@@ -58,7 +58,6 @@ export class ListEventsComponent implements OnChanges {
         if (element.name.indexOf(this.search) > -1)
           count++;
       });
-      console.log('pressed', count);
       this.showSearchMsg = count === 0;
     });
   }

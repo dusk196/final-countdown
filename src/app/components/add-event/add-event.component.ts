@@ -5,7 +5,10 @@ import { AppService } from 'src/app/app.service';
 import { DateInputs } from 'src/app/utils/date-inputs';
 import { CalendarEvents } from 'src/app/utils/calendar-events';
 
+import * as _moment from 'moment';
 import * as _enums from 'src/app/utils/countdown.enum';
+
+const moment = _moment;
 
 @Component({
   selector: 'app-add-event',
@@ -20,8 +23,9 @@ export class AddEventComponent implements OnInit {
   minDate: Date = new Date();
   isHolidaysLoaded: Boolean = false;
   eventList: Array<CalendarEvents> = [];
-  shownList: Array<CalendarEvents> = [];
+  searchList: Array<CalendarEvents> = [];
   currentYear = new Date().getFullYear();
+  searchName: String = '';
   msg: String = '';
 
   constructor(public dialogRef: MatDialogRef<AddEventComponent>, @Inject(MAT_DIALOG_DATA) public data: DateInputs, private appService: AppService) { }
@@ -34,15 +38,13 @@ export class AddEventComponent implements OnInit {
         if (temp.year === this.currentYear) {
           this.eventList = temp.eventList;
           this.isHolidaysLoaded = true;
-        }
-        else
+        } else
           this.callCalendarApi();
       } catch (err: unknown) {
         this.callCalendarApi()
       }
-    } else {
+    } else
       this.callCalendarApi();
-    }
   }
 
   callCalendarApi(): void {
@@ -64,6 +66,21 @@ export class AddEventComponent implements OnInit {
         this.isHolidaysLoaded = true;
       }
     );
+  }
+
+  filterEvents(): void {
+    setTimeout(() => {
+      this.searchList = [];
+      this.searchList.push({ year: this.currentYear, events: [] }, { year: this.currentYear + 1, events: [] });
+      this.searchList[0].events = this.eventList[0].events.filter(x => x.summary.toLowerCase().indexOf(this.data.name.toLowerCase()) > -1);
+      this.searchList[1].events = this.eventList[1].events.filter(x => x.summary.toLowerCase().indexOf(this.data.name.toLowerCase()) > -1);
+    });
+  }
+
+  selectEvent(event: any): void {
+    this.data.name = event.summary;
+    this.data.date = moment(new Date(event.start.date), 'Do of MMMM, YYYY')
+    this.dialogRef.close(this.data);
   }
 
   onNoClick(): void {
