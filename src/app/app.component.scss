@@ -1,0 +1,60 @@
+header {
+
+    position: fixed;
+    width   : 100%;
+    z-index : 3;
+
+    .heading {
+        font-size: xx-large;
+    }
+
+    .spacer {
+        flex: 1 1 auto;
+    }
+
+    .nav-btn {
+        margin-left: 20px;
+    }
+
+    .nav-cal {
+        display       : flex;
+        align-items   : flex-end;
+        flex-direction: column;
+        margin-right  : 20px;
+    }
+
+}
+
+main {
+
+    padding-top: 64px;
+
+    mat-drawer {
+        width           : 30vw;
+        padding         : 10px;
+        background-color: var(--black2);
+        border          : none;
+    }
+
+    mat-drawer-content {
+        background-color: var(--black2);
+    }
+
+    .container {
+        height: calc(100vh - 64px - 28px);
+    }
+
+}
+
+footer {
+
+    color     : var(--white2);
+    font-size : 16px;
+    padding   : 4px;
+    text-align: center;
+
+    a {
+        color: var(--white2);
+    }
+
+}
