@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "final-countdown": {
+    "how-many-days": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/final-countdown",
+            "outputPath": "dist/how-many-days",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -72,10 +72,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "final-countdown:build:production"
+              "browserTarget": "how-many-days:build:production"
             },
             "development": {
-              "browserTarget": "final-countdown:build:development"
+              "browserTarget": "how-many-days:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +83,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "final-countdown:build"
+            "browserTarget": "how-many-days:build"
           }
         },
         "test": {
@@ -116,7 +116,7 @@
         "deploy": {
           "builder": "@netlify-builder/deploy:deploy",
           "options": {
-            "outputPath": "dist/final-countdown",
+            "outputPath": "dist/how-many-days",
             "netlifyToken": "",
             "siteId": "37fa63a1-c0e6-4756-84c0-a1431b138084"
           }

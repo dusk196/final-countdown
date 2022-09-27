@@ -1,14 +1,15 @@
 {
-  "name": "final-countdown",
+  "name": "how-many-days",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "netlify": "ng build && netlify deploy --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "stats": "ng build --stats-json && webpack-bundle-analyzer dist/final-countdown/stats.json"
+    "stats": "ng build --stats-json && webpack-bundle-analyzer dist/how-many-days/stats.json"
   },
   "private": true,
   "dependencies": {

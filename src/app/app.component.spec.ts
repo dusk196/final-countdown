@@ -16,16 +16,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'final-countdown'`, () => {
+  it(`should have as title 'how-many-days'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('final-countdown');
+    expect(app.title).toEqual('how-many-days');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('final-countdown app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('how-many-days app is running!');
   });
 });

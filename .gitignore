@@ -47,6 +47,3 @@ Thumbs.db
 
 # Local Netlify folder
 .netlify
-
-# Netlify deploy file
-netlify.toml
